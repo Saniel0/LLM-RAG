@@ -9,7 +9,7 @@ from typing import List
 from graph_state import GraphState
 
 # splitter function
-textSplitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=500, chunk_overlap=0)
+textSplitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=100, chunk_overlap=0)
 
 # Directory to persist the database
 persist_directory = "./rag_database"
@@ -52,7 +52,7 @@ else:
     )
 
 # create retriver for the database that returns 5 closest matches
-retriever = vectorStore.as_retriever(search_kwargs={"k": 10})
+retriever = vectorStore.as_retriever(search_kwargs={"k": 3})
 
 def retrieve(question : str):
     return retriever.invoke(question)
