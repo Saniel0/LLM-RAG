@@ -1,0 +1,3 @@
+*.csv
+rag_database
+__pycache__
